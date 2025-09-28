@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digisuraksha Parhari Foundation - Next-Gen Cybersecurity</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #00d4ff;
+            --secondary-teal: #00ffc6;
+            --accent-cyan: #4dd0e1;
+            --dark-blue: #0a1929;
+            --mid-blue: #1e3a5f;
+            --light-blue: #e3f2fd;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a1929 0%, #1e3a5f 50%, #263238 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 7s;
+        }
+
+        .shape:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+
+        /* Sophisticated Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100vh;
+            background: rgba(10, 25, 41, 0.95);
+            backdrop-filter: blur(25px);
+            border-left: 1px solid rgba(0, 212, 255, 0.2);
+            z-index: 1000;
+            transition: right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .sidebar-logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .close-sidebar {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-sidebar:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .sidebar-nav {
+            flex: 1;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.4s ease;
+        }
+
+        .sidebar-nav a:hover::before {
+            left: 100%;
+        }
+
+        .sidebar-nav a:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-left-color: var(--primary-blue);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .donate-btn-sidebar {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .donate-btn-sidebar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Top Navigation Bar */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .top-nav.scrolled {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .main-logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .main-logo i {
+            margin-right: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .menu-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .menu-toggle:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Hero Section with Diagonal Design */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--mid-blue) 100%);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(45deg, transparent 50%, #f8f9ff 50%);
+            transform: skewY(-3deg);
+            transform-origin: bottom left;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from { filter: brightness(1); }
+            to { filter: brightness(1.2); }
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            color: white;
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Morphing Shapes */
+        .morphing-container {
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+
+        .morph-shape {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.8;
+        }
+
+        .morph-1 {
+            width: 300px;
+            height: 300px;
+            animation: morph1 8s ease-in-out infinite;
+        }
+
+        .morph-2 {
+            width: 200px;
+            height: 200px;
+            animation: morph2 6s ease-in-out infinite reverse;
+        }
+
+        .morph-3 {
+            width: 150px;
+            height: 150px;
+            animation: morph3 10s ease-in-out infinite;
+        }
+
+        @keyframes morph1 {
+            0%, 100% { 
+                clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+                filter: hue-rotate(0deg);
+            }
+            50% { 
+                clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+                filter: hue-rotate(180deg);
+            }
+        }
+
+        @keyframes morph2 {
+            0%, 100% { 
+                clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            50% { 
+                clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+                transform: translate(-50%, -50%) rotate(180deg);
+            }
+        }
+
+        @keyframes morph3 {
+            0%, 100% { 
+                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        /* Stats Section with Diagonal Cut and Hexagonal Grid */
+        .stats-section {
+            background: #f8f9ff;
+            color: #333;
+            padding: 150px 0;
+            position: relative;
+            transform: skewY(-3deg);
+            margin: -100px 0;
+        }
+
+        .stats-content {
+            transform: skewY(3deg);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .stats-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .stats-title h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+        }
+
+        .hexagon-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hex-stat {
+            width: 150px;
+            height: 130px;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .hex-inner {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hex-inner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .hex-stat:hover .hex-inner::before {
+            opacity: 1;
+            transform: rotate(45deg) translate(50%, 50%);
+        }
+
+        .hex-stat:hover .hex-inner {
+            transform: scale(1.1);
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* About Section - Diagonal */
+        .about-section {
+            padding: 150px 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+            color: #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(-45deg, transparent 50%, #f8f9ff 50%);
+            transform: skewY(3deg);
+        }
+
+        .about-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            color: var(--dark-blue);
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.15);
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h4 {
+            font-size: 1.2rem;
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Services Section - Diagonal */
+        .services-section {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--mid-blue) 100%);
+            padding: 150px 0;
+            position: relative;
+            transform: skewY(-2deg);
+            margin: -80px 0;
+        }
+
+        .services-content {
+            transform: skewY(2deg);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .services-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .services-title h2 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.2);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #f8f9ff;
+            color: #333;
+            padding: 150px 0;
+            position: relative;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(45deg, transparent 50%, var(--mid-blue) 50%);
+            transform: skewY(-2deg);
+        }
+
+        .contact-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h2 {
+            font-size: 3rem;
+            color: var(--dark-blue);
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-blue);
+            padding: 50px 0 30px;
+            color: white;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hexagon-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-shapes">
+            <svg class="shape" width="100" height="100" viewBox="0 0 100 100">
+                <polygon points="50,0 100,38 82,100 18,100 0,38" fill="rgba(0, 212, 255, 0.1)"/>
+            </svg>
+            <svg class="shape" width="80" height="80" viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="40" fill="rgba(0, 255, 198, 0.1)"/>
+            </svg>
+            <svg class="shape" width="120" height="120" viewBox="0 0 120 120">
+                <polygon points="60,0 120,30 120,90 60,120 0,90 0,30" fill="rgba(77, 208, 225, 0.1)"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Glassmorphism Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <i class="fas fa-shield-alt"></i> Digisuraksha
+            </div>
+            <button class="close-sidebar" onclick="toggleSidebar()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#home" onclick="toggleSidebar()">Home</a></li>
+                <li><a href="#about" onclick="toggleSidebar()">About</a></li>
+                <li><a href="#services" onclick="toggleSidebar()">Services</a></li>
+                <li><a href="#contact" onclick="toggleSidebar()">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="#donate" class="donate-btn-sidebar">Donate Now</a>
+    </div>
+
+    <!-- Top Navigation -->
+    <nav class="top-nav" id="topNav">
+        <div class="nav-container">
+            <a href="#home" class="main-logo">
+                <i class="fas fa-shield-alt"></i>
+                Digisuraksha
+            </a>
+            <button class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Securing India's Digital Future</h1>
+                <p>Advanced cybersecurity solutions and training programs designed to protect individuals, organizations, and communities from evolving digital threats. Join us in building a safer cyber ecosystem.</p>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn btn-primary">Explore Solutions</a>
+                    <a href="#contact" class="btn btn-secondary">Get Started</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="morphing-container">
+                    <svg class="morph-shape morph-1" viewBox="0 0 300 300">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0.8" />
+                                <stop offset="100%" style="stop-color:#00ffc6;stop-opacity:0.6" />
+                            </linearGradient>
+                        </defs>
+                        <polygon points="150,0 300,114 246,300 54,300 0,114" fill="url(#grad1)"/>
+                    </svg>
+                    <svg class="morph-shape morph-2" viewBox="0 0 200 200">
+                        <defs>
+                            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#4dd0e1;stop-opacity:0.7" />
+                                <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0.5" />
+                            </linearGradient>
+                        </defs>
+                        <polygon points="100,0 200,100 100,200 0,100" fill="url(#grad2)"/>
+                    </svg>
+                    <svg class="morph-shape morph-3" viewBox="0 0 150 150">
+                        <defs>
+                            <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#00ffc6;stop-opacity:0.9" />
+                                <stop offset="100%" style="stop-color:#4dd0e1;stop-opacity:0.7" />
+                            </linearGradient>
+                        </defs>
+                        <polygon points="75,0 150,37.5 150,112.5 75,150 0,112.5 0,37.5" fill="url(#grad3)"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section with Hexagonal Grid -->
+    <section class="stats-section">
+        <div class="stats-content">
+            <div class="stats-title">
+                <h2>Our Impact</h2>
+                <p>Transforming cybersecurity awareness across India</p>
+            </div>
+            <div class="hexagon-grid">
+                <div class="hex-stat">
+                    <div class="hex-inner">
+                        <div class="stat-number">15K+</div>
+                        <div class="stat-label">People Trained</div>
+                    </div>
+                </div>
+                <div class="hex-stat">
+                    <div class="hex-inner">
+                        <div class="stat-number">750+</div>
+                        <div class="stat-label">Workshops</div>
+                    </div>
+                </div>
+                <div class="hex-stat">
+                    <div class="hex-inner">
+                        <div class="stat-number">300+</div>
+                        <div class="stat-label">Organizations</div>
+                    </div>
+                </div>
+                <div class="hex-stat">
+                    <div class="hex-inner">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Next-Gen Cybersecurity</h2>
+                <p>Digisuraksha Parhari Foundation pioneers advanced cybersecurity education and protection services across India. We combine cutting-edge technology with comprehensive training programs to safeguard digital ecosystems.</p>
+                <p>Our mission extends beyond traditional security measures. We create immersive learning experiences that transform how individuals and organizations approach cyber threats, building resilient digital communities through innovation and expertise.</p>
+                <p>Through strategic partnerships with law enforcement and industry leaders, we're establishing new standards for cybersecurity excellence in the digital age.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h4>AI-Powered Defense</h4>
+                    <p>Advanced threat detection using machine learning algorithms</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users-cog"></i>
+                    <h4>Expert Training</h4>
+                    <p>Industry-certified cybersecurity professionals</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h4>Network Security</h4>
+                    <p>Comprehensive infrastructure protection solutions</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-virus"></i>
+                    <h4>Threat Intelligence</h4>
+                    <p>Real-time monitoring and threat analysis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="services-content">
+            <div class="services-title">
+                <h2>Advanced Solutions</h2>
+                <p>Comprehensive cybersecurity services for the modern digital landscape</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-search-plus"></i>
+                    <h3>Threat Intelligence</h3>
+                    <p>Advanced AI-driven threat detection and analysis systems that identify potential security risks before they impact your infrastructure, providing real-time insights and predictive security measures.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-globe-asia"></i>
+                    <h3>Web Security</h3>
+                    <p>Comprehensive website and application protection against sophisticated cyber attacks, including DDoS mitigation, malware scanning, and vulnerability assessment services.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Penetration Testing</h3>
+                    <p>Professional ethical hacking services to identify security vulnerabilities in your systems, networks, and applications before malicious actors can exploit them.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Data Protection</h3>
+                    <p>Enterprise-grade data encryption, secure backup solutions, and compliance management to ensure your sensitive information remains protected and meets regulatory requirements.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Cloud Security</h3>
+                    <p>Secure cloud migration and management services with continuous monitoring, access control, and data encryption across multi-cloud environments.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Cyber Training</h3>
+                    <p>Immersive cybersecurity training programs combining theoretical knowledge with hands-on practical experience in state-of-the-art simulation environments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>Connect With Us</h2>
+                <p>Ready to secure your digital future? Our cybersecurity experts are here to help you build robust defense strategies tailored to your specific needs.</p>
+                
+                <div style="margin-top: 3rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 12px; backdrop-filter: blur(10px);">
+                        <i class="fas fa-map-marker-alt" style="color: var(--primary-blue); margin-right: 1rem; font-size: 1.5rem;"></i>
+                        <div>
+                            <h4>Headquarters</h4>
+                            <p>Mumbai, Maharashtra, India</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 12px; backdrop-filter: blur(10px);">
+                        <i class="fas fa-envelope" style="color: var(--primary-blue); margin-right: 1rem; font-size: 1.5rem;"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>security@digisuraksha.org</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 12px; backdrop-filter: blur(10px);">
+                        <i class="fas fa-phone" style="color: var(--primary-blue); margin-right: 1rem; font-size: 1.5rem;"></i>
+                        <div>
+                            <h4>24/7 Support</h4>
+                            <p>+91 98765 43210</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Get Security Consultation</h3>
+                <form onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Organization">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="4" placeholder="Security Requirements" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.2rem;">
+                        Request Consultation
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Digisuraksha Foundation</h3>
+                <p>Pioneering cybersecurity excellence through innovation, education, and advanced protection solutions. Building a secure digital future for India.</p>
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                    <a href="#" style="width: 40px; height: 40px; background: var(--primary-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" style="width: 40px; height: 40px; background: var(--primary-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" style="width: 40px; height: 40px; background: var(--primary-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Solutions</h3>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #bdc3c7; text-decoration: none;">Threat Intelligence</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #bdc3c7; text-decoration: none;">Penetration Testing</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #bdc3c7; text-decoration: none;">Cloud Security</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #bdc3c7; text-decoration: none;">Training Programs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #bdc3c7; text-decoration: none;">About Us</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #bdc3c7; text-decoration: none;">Our Team</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #bdc3c7; text-decoration: none;">Careers</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #bdc3c7; text-decoration: none;">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #bdc3c7; text-decoration: none;">Security Blog</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #bdc3c7; text-decoration: none;">Best Practices</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #bdc3c7; text-decoration: none;">Case Studies</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #bdc3c7; text-decoration: none;">Support Center</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid #34495e; color: #bdc3c7;">
+            <p>&copy; 2024 Digisuraksha Parhari Foundation. All rights reserved. | Securing India's Digital Tomorrow</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sidebar functionality
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+                sidebar.classList.remove('active');
+            }
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const topNav = document.getElementById('topNav');
+            if (window.scrollY > 50) {
+                topNav.classList.add('scrolled');
+            } else {
+                topNav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const button = event.target.querySelector('button');
+            const originalText = button.textContent;
+            
+            button.textContent = 'Sending...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you for your inquiry! Our cybersecurity experts will contact you within 24 hours.');
+                event.target.reset();
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 2000);
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate hex stats on scroll
+            const hexStats = document.querySelectorAll('.hex-stat');
+            const statsObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = `${Array.from(hexStats).indexOf(entry.target) * 0.2}s`;
+                        entry.target.style.animation = 'hexFloat 0.8s ease-out forwards';
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            hexStats.forEach(stat => {
+                stat.style.opacity = '0';
+                stat.style.transform = 'translateY(50px)';
+                statsObserver.observe(stat);
+            });
+
+            // Animate service cards
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'all 0.8s ease';
+                card.style.transitionDelay = `${index * 0.1}s`;
+                observer.observe(card);
+            });
+
+            // Animate feature cards
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                card.style.transitionDelay = `${index * 0.1}s`;
+                observer.observe(card);
+            });
+        });
+
+        // Add hex animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes hexFloat {
+                from {
+                    opacity: 0;
+                    transform: translateY(50px) scale(0.8);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+            
+            /* Enhanced hover effects */
+            .service-card:hover {
+                transform: translateY(-10px) scale(1.02);
+            }
+            
+            .feature-card:hover {
+                transform: translateY(-5px) scale(1.02);
+            }
+            
+            /* Glowing effect for morphing shapes */
+            .morph-shape {
+                filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
+            }
+            
+            /* Pulse animation for hero text */
+            @keyframes textPulse {
+                0%, 100% { text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+                50% { text-shadow: 0 0 30px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 255, 198, 0.3); }
+            }
+            
+            .hero-text h1 {
+                animation: textPulse 3s ease-in-out infinite;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Mouse parallax effect for morphing shapes
+        document.addEventListener('mousemove', function(e) {
+            const shapes = document.querySelectorAll('.morph-shape');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.05;
+                const x = (mouseX - 0.5) * speed * 100;
+                const y = (mouseY - 0.5) * speed * 100;
+                
+                shape.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+            });
+        });
+    </script>
+</body>
+</html>
